@@ -115,6 +115,72 @@
         });
     }
 
+    /* ---------- 지도 ---------- */
+    const map = document.querySelector('.region-map');
+    if (map) {
+        const areas = map.querySelectorAll('.map-area');
+        const tip = map.querySelector('.map-tip');
+        const tipTitle = tip.querySelector('strong');
+        const tipDesc = tip.querySelector('p');
+        const TIP_GAP = 14;
+        let activeArea = null;
+
+        areas.forEach((area) => area.setAttribute('aria-label', `${area.dataset.title}. ${area.dataset.desc}`));
+
+        function hideTip() {
+            if (activeArea) activeArea.classList.remove('is-active');
+            activeArea = null;
+            tip.hidden = true;
+        }
+
+        function showTip(area, clientX, clientY) {
+            if (area !== activeArea) {
+                hideTip();
+                activeArea = area;
+                area.classList.add('is-active');
+                tipTitle.textContent = area.dataset.title;
+                tipDesc.textContent = area.dataset.desc;
+                tip.hidden = false;
+            }
+
+            // 커서 위에 띄우되, 공간이 없으면 아래로 뒤집고 지도 밖으로 나가지 않게 제한
+            const box = map.getBoundingClientRect();
+            const x = clientX - box.left;
+            const y = clientY - box.top;
+            const above = y - tip.offsetHeight - TIP_GAP;
+            const left = Math.max(0, Math.min(x - tip.offsetWidth / 2, box.width - tip.offsetWidth));
+            tip.style.transform = `translate(${left}px, ${above >= 0 ? above : y + TIP_GAP}px)`;
+        }
+
+        // 터치는 pointermove가 스크롤과 겹치므로 탭(click)으로만 표시
+        map.addEventListener('pointermove', (event) => {
+            if (event.pointerType === 'touch') return;
+            const area = event.target.closest('.map-area');
+            if (area) showTip(area, event.clientX, event.clientY);
+            else hideTip();
+        });
+
+        map.addEventListener('pointerleave', (event) => {
+            if (event.pointerType !== 'touch') hideTip();
+        });
+
+        document.addEventListener('click', (event) => {
+            const area = event.target.closest('.map-area');
+            if (area) showTip(area, event.clientX, event.clientY);
+            else hideTip();
+        });
+
+        // 키보드 이동 시에는 구역 중앙에 표시
+        map.addEventListener('focusin', (event) => {
+            const area = event.target.closest('.map-area');
+            if (!area || !area.matches(':focus-visible')) return;
+            const box = area.getBoundingClientRect();
+            showTip(area, box.left + box.width / 2, box.top + box.height / 2);
+        });
+
+        map.addEventListener('focusout', hideTip);
+    }
+
     /* ---------- 스크롤 등장 ---------- */
     function watchReveals(view) {
         if (observer) observer.disconnect();

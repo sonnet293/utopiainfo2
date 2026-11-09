@@ -511,6 +511,58 @@ button {
 
 @media (min-width: 640px) { .doc-meta { grid-template-columns: repeat(4, 1fr); } }
 
+/* 지도 */
+.region-map {
+    position: relative;
+    max-width: 800px;
+    margin: clamp(28px, 5vw, 44px) auto 0;
+    padding: 0 clamp(20px, 5vw, 56px);
+}
+
+.region-map svg {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.map-area {
+    cursor: pointer;
+    outline: none;
+    transition: opacity .2s;
+}
+
+.region-map svg:has(.is-active) .map-area:not(.is-active) { opacity: .4; }
+
+.map-tip {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    width: max-content;
+    max-width: min(260px, 100%);
+    padding: 10px 14px;
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    border-top: 2px solid var(--muted);
+    pointer-events: none;
+}
+
+.map-tip strong {
+    display: block;
+    color: var(--heading);
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+.map-tip p {
+    margin-top: 2px;
+    color: var(--text);
+    font-size: 13px;
+    line-height: 1.6;
+    white-space: pre-line;
+}
+
 /* 본문 */
 .doc-body {
     padding-top: 8px;
