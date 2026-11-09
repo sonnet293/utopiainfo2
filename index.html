@@ -33,7 +33,7 @@
             <button data-section="0">총공지</button>
             <button data-section="1">세계관</button>
             <button data-section="2">시스템</button>
-            <button data-section="3">전투</button>
+            <button data-section="3">배틀</button>
         </nav>
         <button class="sound-toggle" type="button" data-sound>SOUND ON</button>
         <div class="scroll-progress" aria-hidden="true"><span></span></div>
@@ -53,11 +53,22 @@
             <button class="reveal" data-section="0" data-en="Notice">총공지</button>
             <button class="reveal" data-section="1" data-en="World">세계관</button>
             <button class="reveal" data-section="2" data-en="System">시스템</button>
-            <button class="reveal" data-section="3" data-en="Battle">전투</button>
+            <button class="reveal" data-section="3" data-en="Battle">배틀</button>
         </nav>
     </div>
 
-    <main class="view page" id="view-section-0" hidden></main>
+    <main class="view page" id="view-section-0" hidden>
+        <article class="doc">
+            <div class="doc-titlebar reveal"><span>EF-NTC-0041_총공지.edoc</span><span>읽기 전용</span></div>
+            <header class="doc-header">
+                <p class="eyebrow reveal">01 / Notice</p>
+                <h2 class="reveal" tabindex="-1">총공지</h2>
+                <p class="noise-title">Utopia Syndrome</p>
+                <p class="noise-text">완벽한 이상을 추구하느라 정작 눈앞의 현실적인 문제 해결을 회피하거나, 이상을 좇는 과정이 오히려 현재의 어려움을 지속시키는 심리 현상</p>
+                <p class="lead reveal">모든 시민은 아래 공지를 숙지할 의무가 있습니다.</p>
+            </header>
+        </article>
+    </main>
     <main class="view page" id="view-section-3" hidden>
         <article class="doc">
             <div class="doc-titlebar reveal"><span>EF-SEC-0666_전투.edoc</span><span>읽기 전용</span></div>
@@ -79,6 +90,24 @@
                 <p>배틀은 <mark>#배틀로그</mark> 태그를 이용하거나, 상대방과 자유롭게 협의 후 진행할 수 있습니다.</p>
                 <p>배틀 일정이 정해졌다면 <strong>배틀 신청방</strong>으로 아래 양식을 보내주시기 바랍니다.</p>
                 <blockquote><p>[ 배틀 시작 예정 시간 | 배틀룸 이름 | 참여하는 캐릭터 2명의 이름 ]</p></blockquote>
+
+                <h3>규칙</h3>
+                <p>배틀의 기본 진행 절차는 다음과 같습니다.</p>
+                <div class="note">
+                    <strong>규칙</strong>
+                    <ol>
+                        <li>배틀 시작 전, 자신의 엔트리 6마리 중 3마리를 선택할 수 있습니다.</li>
+                        <li>배틀이 시작되면 <mark>선두 포켓몬</mark>부터 필드로 나오게 됩니다.</li>
+                        <li>양쪽 모두 기술을 선택합니다.</li>
+                        <li>p1과 p2가 동시에 <mark>1d10 다이스</mark>를 굴려 선공과 후공을 결정합니다.</li>
+                        <li>양쪽 모두 순서에 맞게 행동을 마칩니다. 여기까지를 <strong>1라운드</strong>로 간주합니다.</li>
+                        <li>이 과정을 반복, <strong>먼저 엔트리가 전멸하는 쪽</strong>이 패배하게 됩니다.</li>
+                    </ol>
+                </div>
+
+                <h3>스탯</h3>
+                <p>모든 포켓몬은 <mark>속도, 방어, 공격 스탯</mark>을 가지고 있습니다.</p>
+                <p><strong>각 스탯의 기본 포인트는 5로, 추가적으로 15의 스탯포인트를 각 스탯에 투자할 수 있습니다.</strong></p>
             </div>
         </article>
     </main>
