@@ -80,8 +80,8 @@
         wrap.append(table);
     });
 
-    // 본문 블록에 스크롤 등장 애니메이션 적용 (목록은 전체가 아니라 항목별로)
-    document.querySelectorAll('.doc-body > :not(ul, ol), .doc-body li').forEach((block) => block.classList.add('reveal'));
+    // 본문 블록에 스크롤 등장 애니메이션 적용 (목록은 상위 항목 단위로, 하위 항목은 함께 등장)
+    document.querySelectorAll('.doc-body > :not(ul, ol), .doc-body > ul > li, .doc-body > ol > li').forEach((block) => block.classList.add('reveal'));
 
     // 제목(h3)으로 왼쪽 목차 만들기
     const outlines = new Map();
