@@ -193,11 +193,15 @@ button {
 .noise-title, .noise-text {
     position: relative;
     width: fit-content;
-    animation: noise-jitter 4.2s steps(1) infinite;
     color: var(--muted);
 }
 
-.noise-text { animation-duration: 5.7s; animation-delay: -1.6s; }
+/* 등장(reveal) 전환이 끝난 뒤에 시작해야 opacity/transform을 덮어쓰지 않음 */
+.noise-title.is-in, .noise-text.is-in {
+    animation: noise-jitter 4.2s steps(1) calc(var(--delay, 0ms) + .8s) infinite;
+}
+
+.noise-text.is-in { animation-duration: 5.7s; }
 
 .noise-title::before, .noise-title::after,
 .noise-text::before, .noise-text::after {
@@ -706,7 +710,7 @@ td:first-child { white-space: nowrap; }
 .next-page span {
     display: block;
     margin-bottom: 8px;
-    font: 500 12px/1.2 var(--mono);
+    font: 500 12px/1.2 var(--sans);
     color: var(--muted);
 }
 

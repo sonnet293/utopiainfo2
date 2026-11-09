@@ -80,8 +80,8 @@
         wrap.append(table);
     });
 
-    // 본문의 모든 블록에 스크롤 등장 애니메이션 적용
-    document.querySelectorAll('.doc-body > *').forEach((block) => block.classList.add('reveal'));
+    // 본문 블록에 스크롤 등장 애니메이션 적용 (목록은 전체가 아니라 항목별로)
+    document.querySelectorAll('.doc-body > :not(ul, ol), .doc-body li').forEach((block) => block.classList.add('reveal'));
 
     // 제목(h3)으로 왼쪽 목차 만들기
     const outlines = new Map();
@@ -167,9 +167,10 @@
     function updateProgress() {
         const max = document.documentElement.scrollHeight - window.innerHeight;
 
-        // 문서 끝에서는 읽는 위치까지 올라오지 못한 형광펜도 마저 긋기
+        // 문서 끝에서는 읽는 위치까지 올라오지 못한 형광펜과 등장 요소도 마저 처리
         if (activeView && max - window.scrollY <= 2) {
             activeView.querySelectorAll('mark').forEach((mark) => mark.classList.add('is-drawn'));
+            activeView.querySelectorAll('.reveal').forEach((item) => item.classList.add('is-in'));
         }
 
         const ratio = max > 0 ? Math.min(window.scrollY / max, 1) : 0;
