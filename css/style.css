@@ -528,10 +528,13 @@ button {
 .map-area {
     cursor: pointer;
     outline: none;
-    transition: opacity .2s;
+    fill: var(--redact);
+    stroke: var(--surface); /* 맞닿은 구역의 경계선 */
+    stroke-width: 4;
+    transition: fill .2s;
 }
 
-.region-map svg:has(.is-active) .map-area:not(.is-active) { opacity: .4; }
+.map-area.is-active { fill: var(--heading); }
 
 .map-tip {
     position: absolute;
