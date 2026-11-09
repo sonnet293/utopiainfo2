@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="css/style.css">
+    <title>EDEN | Humanity Beyond Limitation</title>
+    <script>
+        document.documentElement.classList.add('js');
+    </script>
+    <script src="js/main.js" defer></script>
+</head>
+<body class="is-locked">
+
+    <audio src="bgm/bgm.mp3" id="bgm" preload="auto" loop></audio>
+
+    <!--인트로-->
+    <div id="intro-overlay" role="button" tabindex="0" aria-label="터치하여 입장">
+        <div class="intro-ring" aria-hidden="true"></div>
+        <div class="intro-logo">EDEN</div>
+        <div class="intro-tagline">Humanity Beyond Limitation</div>
+        <div class="intro-hint">Touch to Enter</div>
+    </div>
+    <canvas id="static-noise" aria-hidden="true" hidden></canvas>
+
+    <!--네비게이션 바-->
+    <header class="page-bar" hidden>
+        <button class="page-bar-logo" data-home aria-label="메인">EDEN</button>
+        <nav class="page-tabs" aria-label="페이지">
+            <button data-section="0">총공지</button>
+            <button data-section="1">세계관</button>
+            <button data-section="2">시스템</button>
+            <button data-section="3">전투</button>
+        </nav>
+        <button class="sound-toggle" type="button" data-sound>SOUND ON</button>
+        <div class="scroll-progress" aria-hidden="true"><span></span></div>
+    </header>
+
+    <!--메인 화면-->
+    <div class="view" id="view-main" hidden>
+        <button class="sound-toggle sound-toggle--floating" type="button" data-sound>SOUND ON</button>
+
+        <header class="site-header">
+            <p class="eyebrow reveal">EDEN Foundation ― Internal Archive</p>
+            <h1 class="reveal">EDEN</h1>
+            <p class="slogan reveal">Building Tomorrow, Today</p>
+        </header>
+
+        <nav class="main-nav">
+            <button class="reveal" data-section="0" data-en="Notice">총공지</button>
+            <button class="reveal" data-section="1" data-en="World">세계관</button>
+            <button class="reveal" data-section="2" data-en="System">시스템</button>
+            <button class="reveal" data-section="3" data-en="Battle">전투</button>
+        </nav>
+    </div>
+
+    <main class="view page" id="view-section-0" hidden></main>
+    <main class="view page" id="view-section-3" hidden>
+        <article class="doc">
+            <div class="doc-titlebar reveal"><span>EF-SEC-0666_전투.edoc</span><span>읽기 전용</span></div>
+            <header class="doc-header">
+                <p class="eyebrow reveal">04 / Battle</p>
+                <h2 class="reveal" tabindex="-1">배틀</h2>
+                <p class="lead reveal">이곳에 폭력은 존재하지 않습니다. 공식적으로는 그렇습니다.</p>
+                <!--doc-meta reveal-->
+            </header>
+
+            <div class="doc-body">
+                <h3>기본 규칙</h3>
+                <p>본 커뮤니티에서 진행하는 배틀은 <mark>전용 웹사이트</mark>에서 진행됩니다.</p>
+                <p><strong>최적의 플레이를 위하여 크롬 브라우저 이용을 권장합니다.</strong></p>
+                <p>본 문서는 수시로 업데이트 될 예정입니다.</p>
+
+                <h3>배틀 시스템</h3>
+                <p>스토리 진행, 일정 중 발생하는 특수 배틀 외 일상 배틀은 <strong>싱글배틀</strong>로 이루어집니다.</p>
+                <p>배틀은 <mark>#배틀로그</mark> 태그를 이용하거나, 상대방과 자유롭게 협의 후 진행할 수 있습니다.</p>
+                <p>배틀 일정이 정해졌다면 <strong>배틀 신청방</strong>으로 아래 양식을 보내주시기 바랍니다.</p>
+                <blockquote><p>[ 배틀 시작 예정 시간 | 배틀룸 이름 | 참여하는 캐릭터 2명의 이름 ]</p></blockquote>
+            </div>
+        </article>
+    </main>
+    
+</body>
+</html>
