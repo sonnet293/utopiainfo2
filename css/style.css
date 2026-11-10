@@ -590,6 +590,7 @@ button {
     font-weight: 700;
     line-height: 1.4;
     counter-increment: heading;
+    counter-reset: subheading;
     scroll-margin-top: calc(var(--bar-h) + 24px);
 }
 
@@ -605,6 +606,13 @@ button {
     font-size: 18px;
     font-weight: 600;
     line-height: 1.5;
+    counter-increment: subheading;
+}
+
+.doc-body h4::before {
+    content: counter(heading) "." counter(subheading) " ";
+    color: var(--muted);
+    font-weight: 500;
 }
 
 .doc-body ul, .doc-body ol { padding-left: 1.5em; }
@@ -773,6 +781,81 @@ td:first-child { white-space: nowrap; }
 .note--alert { border-top-color: var(--red); }
 .note--alert > strong { color: var(--red); }
 .note > strong { display: block; margin-bottom: 4px; }
+
+/* 상태이상 / 상태변화 카드 */
+.doc-body > .status-label {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 2.2em 0 .9em;
+    font-size: 15px;
+    letter-spacing: .04em;
+}
+
+.status-label::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+}
+
+/* 왼쪽 열에 이름, 오른쪽 열에 설명 */
+.status {
+    position: relative;
+    padding: 16px 0 16px 128px;
+    border-bottom: 1px solid var(--line);
+}
+
+.status-label + .status { padding-top: 6px; }
+.status-label + .status .status-name { top: 6px; }
+.status + .status-label { margin-top: 2.6em; }
+
+.status-name {
+    position: absolute;
+    top: 16px;
+    left: 0;
+    width: 112px;
+    font-weight: 600;
+}
+
+.status > p + p { margin-top: .3em; }
+.status > ul { margin: .5em 0 0; }
+.status > .status-name + * { margin-top: 0; } /* 이름 바로 뒤에 목록이 와도 첫 줄 높이를 맞춤 */
+.status li { margin-bottom: .3em; }
+.status li:last-child { margin-bottom: 0; }
+.status .table-wrap { margin: 1em 0 4px; }
+
+@media (max-width: 640px) {
+    .status { padding-left: 0; }
+    .status-name, .status-label + .status .status-name { position: static; width: auto; margin-bottom: .3em; }
+}
+
+/* 채용 불가 기술 */
+.banned-note {
+    display: block;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--muted);
+}
+
+.doc-body .move-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 0;
+}
+
+.doc-body .move-tags > li {
+    margin: 0;
+    padding: 5px 12px;
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    font-size: 14px;
+    line-height: 1.5;
+    white-space: nowrap;
+}
+
+.doc-body .move-tags > li::before { content: none; }
 
 /* 목차 */
 .doc-toc { display: none; }

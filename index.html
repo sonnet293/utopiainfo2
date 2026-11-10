@@ -427,7 +427,347 @@
     </main>
 
     <!--배틀-->
-    <main class="view reveal" id="view-section-3" hidden></main>
+    <main class="view page" id="view-section-3" hidden>
+        <article class="doc">
+            <div class="doc-titlebar reveal"><span>EF-SEC-0666_전투.edoc</span><span>읽기 전용</span></div>
+            <header class="doc-header">
+                <p class="eyebrow reveal">04 / Battle</p>
+                <h2 class="reveal" tabindex="-1">배틀</h2>
+                <p class="lead reveal">에덴에 폭력은 존재하지 않습니다. 공식적으로는 그렇습니다.</p>
+                <dl class="doc-meta reveal">
+                    <div><dt>문서번호</dt><dd>EDEN-SYS/BTL-003</dd></div>
+                    <div><dt>보안등급</dt><dd class="red">극비·열람 허가</dd></div>
+                    <div><dt>작성부서</dt><dd>EDEN 재단 안전통제국</dd></div>
+                    <div><dt>최종수정</dt><dd>EDEN 표준력 / 06:00</dd></div>
+                </dl>
+            </header>
+
+            <div class="doc-body">
+                <p>본 커뮤니티의 모든 포켓몬 배틀은 <strong>전용 웹사이트</strong>를 통해 진행됩니다.</p>
+                <p>본 문서는 배틀의 진행 방식, 스탯 및 피해량 계산, 기술 제한에 관하여 안내합니다.</p>
+                <div class="note">
+                    <strong>시스템 안내</strong>
+                    <p>본 문서는 운영 및 시스템 조정에 따라 수시로 수정·갱신될 수 있습니다.</p>
+                </div>
+
+                <h3>배틀 시스템</h3>
+                <p>스토리 진행 및 일정 중 발생하는 특수 배틀을 제외한 모든 일상 배틀은 <strong>싱글배틀</strong>로 진행됩니다.</p>
+                <p>배틀은 <mark>#배틀로그</mark> 태그를 이용하거나, 상대방과 자유롭게 협의하여 진행할 수 있습니다.</p>
+                <p>배틀 일정이 확정되었다면 아래 양식에 따라 <strong>배틀 신청방</strong>에 신청 내용을 제출해주시기 바랍니다.</p>
+                <div class="note">
+                    <strong>배틀 신청 양식</strong>
+                    <p>[ 배틀 시작 예정 시간 | 배틀룸 이름 | 참여 캐릭터 2명의 이름 ]</p>
+                </div>
+
+                <h3>배틀 진행 규칙</h3>
+                <p>배틀은 다음 절차에 따라 진행됩니다.</p>
+                <ol>
+                    <li><strong>출전 포켓몬 선택</strong>
+                        <ul>
+                            <li>배틀 시작 전, 자신의 엔트리 6마리 중 <strong>3마리</strong>를 선택하여 출전시킬 수 있습니다.</li>
+                        </ul>
+                    </li>
+                    <li><strong>배틀 개시</strong>
+                        <ul>
+                            <li>양측의 선두 포켓몬부터 필드에 등장합니다.</li>
+                        </ul>
+                    </li>
+                    <li><strong>기술 선택</strong>
+                        <ul>
+                            <li>각 플레이어는 해당 라운드에 사용할 기술을 선택합니다.</li>
+                        </ul>
+                    </li>
+                    <li><strong>행동 순서 결정</strong>
+                        <ul>
+                            <li>양측 모두 기술 선택을 완료하면 각각 <strong>1d10</strong> 다이스를 굴려 선공과 후공을 결정합니다.</li>
+                        </ul>
+                    </li>
+                    <li><strong>행동 실행</strong>
+                        <ul>
+                            <li>선공 포켓몬부터 순서대로 행동합니다.</li>
+                            <li>양측 모두 행동을 완료하면 <strong>1라운드</strong>가 종료됩니다.</li>
+                        </ul>
+                    </li>
+                    <li><strong>다음 라운드 진행</strong>
+                        <ul>
+                            <li>라운드가 종료되면 다시 기술을 선택하고 동일한 절차를 반복합니다.</li>
+                            <li>출전한 포켓몬 3마리가 모두 기절한 플레이어가 패배합니다.</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <blockquote>
+                    <p>승패는 중요하지 않습니다. 중요한 것은 정해진 절차를 따르는 것입니다. 절차를 따르지 않는 승리는 <span class="redact">@#$*#</span> 처리될 수 있습니다.</p>
+                    <cite>EDEN 자동 배틀 시스템, 운영 기록 BTL-017</cite>
+                </blockquote>
+
+                <h3>스탯 포인트</h3>
+                <p>모든 포켓몬은 <mark>속도, 방어, 공격</mark>의 세 가지 스탯을 보유합니다.</p>
+                <p>각 스탯의 기본 포인트는 <strong>5</strong>이며, 추가로 지급되는 <mark>15 스탯 포인트</mark>를 세 스탯에 자유롭게 분배할 수 있습니다.</p>
+
+                <h4>속도</h4>
+                <p>속도는 포켓몬의 <mark>선공 여부와 회피율</mark>에 영향을 줍니다.</p>
+                <div class="note">
+                    <strong>선공 판정</strong>
+                    <ul>
+                        <li>선공 수치 = 자신의 속도 + 1d10</li>
+                        <li>양측의 선공 수치를 비교하여 더 높은 쪽이 먼저 행동합니다.</li>
+                    </ul>
+
+                    <br>
+
+                    <strong>회피율 계산</strong>
+                    <ul>
+                        <li>회피율 = 3 × (자신의 속도 - 상대의 속도)%</li>
+                        <li><strong>최소 0% ~ 최대 18%</strong>까지 적용됩니다.</li>
+                    </ul>
+                </div>
+
+                <h4>방어</h4>
+                <p>방어는 <mark>포켓몬의 최대 HP와 방어력</mark>에 영향을 줍니다.</p>
+                <div class="note">
+                    <strong>HP 계산</strong>
+                    <ul>
+                        <li>최대 HP = 120 + (방어 × 12)</li>
+                    </ul>
+                    
+                    <br>
+
+                    <strong>방어력</strong>
+                    <ul>
+                        <li>방어력은 상대의 공격으로 받는 피해량을 감소시키는 수치입니다.</li>
+                        <li>방어력의 계산 및 적용 방식은 아래 <strong>공격 항목</strong>을 참고해주시기 바랍니다.</li>
+                    </ul>
+                </div>
+
+                <h4>공격</h4>
+                <p>공격은 <mark>상대에게 가하는 최종 피해량과 급소율</mark>에 영향을 줍니다.</p>
+                <div class="note">
+                    <strong>최종 피해량 계산</strong>
+                    <ul>
+                        <li>최종 피해량 = ((기술 위력 + 공격 × 4 + 1d10) × 타입 상성 × 자속 보정) - (상대의 방어 × 3)</li>
+                        <li>이때 <strong>상대의 방어 × 3을 방어력으로 간주</strong>하여 피해량에서 차감합니다.</li>
+                    </ul>
+
+                    <br>
+
+                    <strong>급소 판정</strong>
+                    <ul>
+                        <li>급소율 = 공격 × 2%</li>
+                        <li>급소 피해량 = 최종 피해량 × 1.5</li>
+                    </ul>
+                </div>
+
+                <h3>랭크 및 보정</h3>
+                <h4>랭크 변화</h4>
+                <p><strong>모든 랭크 변화 기술은 <mark>사용한 턴을 포함하여 3턴간 지속</mark>됩니다.</strong></p>
+                <p>랭크 변화에 따른 보정값은 다음과 같습니다.</p>
+                <table>
+                    <thead><tr><th>랭크</th><th>보정값</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>-3랭크</strong></td><td>×0.4 (더 이상 내려가지 않음)</td></tr>
+                        <tr><td><strong>-2랭크</strong></td><td>×0.6</td></tr>
+                        <tr><td><strong>-1랭크</strong></td><td>×0.8</td></tr>
+                        <tr><td><strong>0랭크</strong></td><td>×1.0 (기본값)</td></tr>
+                        <tr><td><strong>1랭크</strong></td><td>×1.2</td></tr>
+                        <tr><td><strong>2랭크</strong></td><td>×1.4</td></tr>
+                        <tr><td><strong>3랭크</strong></td><td>×1.6 (더 이상 올라가지 않음)</td></tr>
+                    </tbody>
+                </table>
+                <div class="note">
+                    <strong>공격 랭크 적용</strong>
+                    <ul>
+                        <li>공격 랭크 보정은 <mark>타입 상성 및 자속 보정 이전</mark> 적용됩니다.</li>
+                        <li>최종 피해량 = ((기술 위력 + 공격 × 4 + 1d10) <strong>× 공격 랭크 보정</strong> × 타입 상성 × 자속 보정) - (상대의 방어 × 3)</li>
+                        <li>공격 랭크 변화는 급소율에 영향을 주지 않습니다. 단, 급소 피해량에는 영향을 줄 수 있습니다.</li>
+                    </ul>
+                    
+                    <br>
+
+                    <strong>방어 랭크 적용</strong>
+                    <ul>
+                        <li>방어 랭크 보정은 <mark>최종 피해량 계산 이후</mark> 적용됩니다.</li>
+                        <li>최종 피해량 = ((기술 위력 + 공격 × 4 + 1d10) × 타입 상성 × 자속 보정) - (상대의 방어 × 3) <strong>× (상대의 방어 랭크 보정)</strong></li>
+                        <li>방어 랭크 변화는 포켓몬의 최대 HP에 영향을 주지 않습니다.</li>
+                    </ul>
+
+                    <br>
+
+                    <strong>속도 랭크 적용</strong>
+                    <ul>
+                        <li>속도 랭크 보정은 <mark>회피율 계산 이후</mark> 적용됩니다.</li>
+                        <li>회피율 = 3 × (자신의 속도 - 상대의 속도)% <strong>× 자신의 속도 랭크 보정</strong></li>
+                        <li>속도 랭크 변화는 선공 여부에 영향을 주지 않습니다.</li>
+                    </ul>
+                </div>
+
+                <h4>기술 및 타입 보정</h4>
+                <p>기술의 명중률은 <strong>원작의 기술별 명중률</strong>을 따릅니다.</p>
+                <p>반드시 선제공격하는 기술은 <strong>일반적인 선공 계산을 무시하고 우선 행동</strong>합니다.</p>
+                <p>자속 보정(포켓몬과 사용하는 기술의 타입이 일치할 경우) <strong>×1.3의 보정값</strong>을 적용합니다.</p>
+                <p>기술의 위력은 본 커뮤니티의 시스템에 맞게 아래 수치로 보정됩니다.</p>
+                <table>
+                    <thead><tr><th>원작 기술 위력</th><th>보정값</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>45 ~ 60</strong></td><td>40</td></tr>
+                        <tr><td><strong>65 ~ 80</strong></td><td>50</td></tr>
+                        <tr><td><strong>85 ~ 100</strong></td><td>60</td></tr>
+                        <tr><td><strong>110 이상</strong></td><td>70</td></tr>
+                        <tr><td><strong>그 외 특수 기술</strong></td><td>80 또는 별도 보정</td></tr>
+                    </tbody>
+                </table>
+                <p>타입의 상성은 원작의 설정을 따르되, 아래 수치로 보정됩니다.</p>
+                <table>
+                    <thead><tr><th>타입 상성</th><th>적용 배율</th></tr></thead>
+                    <tr><td><strong>약점 (효과가 굉장함)</strong></td><td>×1.2</td></tr>
+                    <tr><td><strong>통상</strong></td><td>×1.0</td></tr>
+                    <tr><td><strong>저항 (효과가 별로임)</strong></td><td>×0.8</td></tr>
+                    <tr><td><strong>무효 (효과가 없음)</strong></td><td>×0</td></tr>
+                </table>
+
+                <blockquote>
+                    <p>모든 결과는 수치로 설명할 수 있습니다. 설명되지 않는 결과가 발생했다면, 그것은 아직 올바른 수치가 입력되지 않았기 때문입니다.</p>
+                    <cite>EDEN 전투 분석 시스템, 제3항</cite>
+                </blockquote>
+
+                <h3>세부 규칙</h3>
+                <h4>명중률과 회피율</h4>
+                <p><mark>명중률과 회피율은 서로 독립적으로 판정됩니다.</mark></p>
+                <p>명중률은 사용한 기술이 정상적으로 발동하는지를 결정합니다. 예를 들어 명중률이 100%인 기술은 반드시 발동에 성공합니다.</p>
+                <p>그러나 기술의 발동 성공이 상대에 대한 적중을 보장하지는 않습니다. 명중 판정이 성공한 후에는 상대의 회피율을 기준으로 별도의 회피 판정이 이루어집니다.</p>
+                <div class="note">
+                    <strong>최종 적중 확률</strong>
+                    <p>최종 적중 확률 = 기술 명중률 × (1 - 상대의 회피율)</p>
+
+                    <br>
+
+                    <strong>적용 예시</strong>
+                    <p>명중률 100%의 잠재파워를 사용하고, 상대의 회피율이 18%인 상황을 가정합니다.</p>
+                    <p>100% × (1 - 0.18) = <strong>82%</strong></p>
+                    <p>따라서, 해당 기술은 최종적으로 <strong>82%의 확률</strong>로 상대에게 적중합니다.</p>
+                </div>
+
+                <h4>상태이상과 상태변화</h4>
+                <p>상태이상(독, 화상, 얼음, 마비)과 상태변화(혼란, 풀죽음 등)에 대한 사항은 다음과 같습니다.</p>
+                <ul>
+                    <li><strong>'잠듦' 상태이상을 부여하거나, 이와 관련된 기술은 채용할 수 없습니다.</strong></li>
+                    <li>상태이상은 중첩될 수 없습니다.</li>
+                    <li>상태변화는 중첩될 수 있습니다.</li>
+                </ul>
+                <p class="status-label"><strong>상태이상</strong></p>
+                <div class="status">
+                    <p class="status-name"><mark>독 / 화상</mark></p>
+                    <p>독 또는 화상 상태인 포켓몬은 <strong>매 라운드 최대 HP의 1/16</strong>에 해당하는 피해를 입습니다.</p>
+                    <ul>
+                        <li>맹독의 누적 피해 증가 효과는 적용되지 않습니다.</li>
+                        <li>화상으로 인한 물리 기술 위력 감소는 적용되지 않습니다.</li>
+                        <li>독타입 및 강철타입 포켓몬은 독 상태가 되지 않습니다.</li>
+                        <li>불꽃타입 포켓몬은 화상 상태가 되지 않습니다.</li>
+                    </ul>
+                </div>
+
+                <div class="status">
+                    <p class="status-name"><mark>마비</mark></p>
+                    <p>마비 상태인 포켓몬은 매 행동 시 <strong>25%의 확률</strong>로 행동할 수 없습니다.</p>
+                    <ul>
+                        <li>마비로 인한 속도 감소 효과는 적용되지 않습니다.</li>
+                        <li><strong>전기타입 포켓몬도 다른 포켓몬과 동일하게 마비 상태가 될 수 있습니다.</strong></li>
+                    </ul>
+                </div>
+
+                <div class="status">
+                    <p class="status-name"><mark>얼음</mark></p>
+                    <p>얼음 상태인 포켓몬은 <strong>상태가 해제되기 전까지 행동할 수 없습니다.</strong></p>
+                    <ul>
+                        <li>얼음타입 포켓몬은 얼음 상태가 되지 않습니다.</li>
+                        <li>얼음 상태는 자신의 턴마다 아래 확률에 따라 해제 판정을 진행합니다.</li>
+                    </ul>
+                    <table>
+                        <thead><tr><th>경과 턴</th><th>해제 확률</th></tr></thead>
+                        <tbody>
+                            <tr><td><strong>1턴째</strong></td><td>25%</td></tr>
+                            <tr><td><strong>2턴째</strong></td><td>35%</td></tr>
+                            <tr><td><strong>3턴째</strong></td><td>45%</td></tr>
+                            <tr><td><strong>4턴 이후</strong></td><td>65%</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p class="status-label"><strong>상태변화</strong></p>
+                <div class="status">
+                    <p class="status-name"><mark>혼란</mark></p>
+                    <p>혼란 상태인 포켓몬은 <strong>15% 확률</strong>로 선택한 기술이 취소되며, 자신을 공격합니다.</p>
+                    <ul>
+                        <li>자해 피해량은 <strong>자신의 공격 스탯 × 2</strong>의 고정 정수값으로 계산합니다.</li>
+                        <li>혼란은 <strong>3 ~ 5턴간 지속</strong>됩니다.</li>
+                    </ul>
+                </div>
+
+                <div class="status">
+                    <p class="status-name"><mark>풀죽음</mark></p>
+                    <p>풀죽음 상태가 되면 해당 턴의 기술 사용이 취소되며, 행동할 수 없게 됩니다.</p>
+                    <ul>
+                        <li>풀죽음은 <strong>1턴간 지속</strong>됩니다.</li>
+                    </ul>
+                </div>
+
+                <blockquote>
+                    <p>전투 중 발생하는 모든 이상 상태는 정상적인 관리 범위에 포함됩니다. 불편함을 느끼셨다면 안심하세요. 시스템은 이미 해당 사실을 인지하고 있습니다.</p>
+                    <cite>EDEN 자동 배틀 시스템, 운영 기록 BTL-022</cite>
+                </blockquote>
+
+                <h3>기술 제한</h3>
+                <h4>채용 불가능한 기술</h4>
+                <p>배틀 밸런스 유지를 위해 다음 기술의 채용을 금지합니다.</p>
+                <ul>
+                    <li>모든 일격 기술</li>
+                    <li>잠듦과 관련된 기술 (잠자기, 꿈먹기 등)</li>
+                    <li>분노의앞니 등 상대의 HP를 일정 비율로 감소시키는 기술
+                        <span class="banned-note">단, 씨뿌리기 등 지속 피해(EOT) 기술은 제외합니다.</span>
+                    </li>
+                </ul>
+                <ul class="move-tags">
+                    <li>칼등치기</li>
+                    <li>죽기살기</li>
+                    <li>길동무</li>
+                    <li>대타출동</li>
+                    <li>앵콜</li>
+                    <li>헤롱헤롱 / 유혹</li>
+                    <li>손가락흔들기</li>
+                    <li>자폭 / 대폭발</li>
+                    <li>성묘</li>
+                    <li>아픔나누기</li>
+                    <li>트릭룸</li>
+                    <li>발버둥</li>
+                </ul>
+
+                <h4>별도 보정 기술</h4>
+                <p>일부 기술은 원작의 효과 대신 커뮤니티 전용 보정값을 적용합니다.</p>
+
+                <div class="status">
+                    <p class="status-name"><mark>씨뿌리기</mark></p>
+                    <ul>
+                        <li>대상의 최대 HP의 <strong>1/16</strong>에 해당하는 HP를 빼앗아 회복합니다.</li>
+                        <li>효과는 <strong>2라운드마다 1회</strong> 발동합니다.</li>
+                    </ul>
+                </div>
+
+                <div class="status">
+                    <p class="status-name"><mark>HP 흡수 기술</mark></p>
+                    <ul>
+                        <li>모든 HP 흡수 기술은 상대에게 가한 피해량의 <strong>최대 22%</strong>를 회복할 수 있습니다.</li>
+                    </ul>
+                </div>
+
+                <div class="status">
+                    <p class="status-name"><mark>자가회복 기술</mark></p>
+                    <ul>
+                        <li>모든 자가회복 기술은 자신의 최대 HP의 <strong>최대 30%</strong>를 회복할 수 있습니다.</li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+    </main>
     
 </body>
 </html>
