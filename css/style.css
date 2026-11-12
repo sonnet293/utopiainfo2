@@ -24,17 +24,17 @@
 :root {
     color-scheme: dark;
 
-    --bg: #0d0f10;
-    --surface: #16191b;
-    --surface-2: #1e2225;
-    --line: #2d3236;
-    --text: #dadde0;
-    --heading: #f3f4f5;
-    --muted: #9aa1a6;
-    --red: #ff6f61;
-    --highlight: #f4d94e;
-    --highlight-text: #17150a;
-    --redact: #50565b;
+    --bg: #1B1A15;
+    --surface: #212224;
+    --surface-2: #292B2E;
+    --line: #383B3F;
+    --text: #D8D6D0;
+    --heading: #EEF0F2;
+    --muted: #979BA0;
+    --red: #C77B78;
+    --highlight: #E8CF5A;
+    --highlight-text: #1B1A15;
+    --redact: #54585D;
 
     --sans: "Pretendard", "Malgun Gothic", system-ui, sans-serif;
     --mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
@@ -76,7 +76,7 @@ body::before {
     inset: -40px;
     z-index: -1;
     background:
-        linear-gradient(rgba(13, 15, 16, .55), rgba(13, 15, 16, .55)),
+        linear-gradient(rgba(27, 26, 21, .55), rgba(27, 26, 21, .55)),
         url("../img/background.jpg") center / cover no-repeat;
     filter: blur(14px);
     pointer-events: none;
@@ -115,7 +115,7 @@ button {
     align-items: center;
     justify-content: center;
     padding: var(--gutter);
-    background: #070808;
+    background: #0E0F11;
     color: var(--heading);
     text-align: center;
     cursor: pointer;
@@ -401,7 +401,7 @@ button {
     gap: 24px;
     min-height: var(--bar-h);
     padding: 0 var(--gutter);
-    background: rgba(13, 15, 16, .94);
+    background: rgba(27, 26, 21, .94);
     border-bottom: 1px solid var(--line);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
