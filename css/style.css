@@ -1,5 +1,26 @@
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
 
+@font-face {
+    font-family: 'BusanDandiMyeongjo';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/2610132210@l-2/l/부산단디명조L.woff2') format('woff2');
+    font-weight: 300;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'BusanDandiMyeongjo';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/2610132210@l-2/l/부산단디명조M.woff2') format('woff2');
+    font-weight: 500;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'BusanDandiMyeongjo';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/2610132210@l-2/l/부산단디명조B.woff2') format('woff2');
+    font-weight: 700;
+    font-display: swap;
+}
+
 :root {
     color-scheme: dark;
 
@@ -17,6 +38,7 @@
 
     --sans: "Pretendard", "Malgun Gothic", system-ui, sans-serif;
     --mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+    --logo: "BusanDandiMyeongjo", "Nanum Myeongjo", "Batang", serif;
 
     --gutter: clamp(20px, 5vw, 64px);
     --bar-h: 56px;
@@ -45,6 +67,19 @@ body {
 
 body.is-locked {
     overflow: hidden;
+}
+
+/* 흐린 배경 이미지 (본문 박스 뒤) */
+body::before {
+    content: "";
+    position: fixed;
+    inset: -40px;
+    z-index: -1;
+    background:
+        linear-gradient(rgba(13, 15, 16, .55), rgba(13, 15, 16, .55)),
+        url("../img/background.jpg") center / cover no-repeat;
+    filter: blur(14px);
+    pointer-events: none;
 }
 
 [hidden] {
@@ -114,11 +149,11 @@ button {
 
 .intro-logo {
     position: relative;
-    font-weight: 600;
-    font-size: clamp(48px, 13vw, 104px);
+    font-family: var(--logo);
+    font-weight: 700;
+    font-size: clamp(44px, 12vw, 96px);
     line-height: 1;
-    letter-spacing: .3em;
-    margin-right: -.3em;
+    letter-spacing: -.02em;
     animation: rise 1.6s var(--ease) both;
 }
 
@@ -300,10 +335,11 @@ button {
 .site-header h1 {
     margin-top: 16px;
     color: var(--heading);
-    font-weight: 600;
-    font-size: clamp(76px, min(21vw, 24vh), 260px);
+    font-family: var(--logo);
+    font-weight: 700;
+    font-size: clamp(52px, min(15vw, 16vh), 190px);
     line-height: .95;
-    letter-spacing: .04em;
+    letter-spacing: -.02em;
 }
 
 .slogan {
@@ -373,9 +409,12 @@ button {
 
 .page-bar-logo {
     color: var(--heading);
-    font-weight: 600;
-    font-size: 18px;
-    letter-spacing: .14em;
+    font-family: var(--logo);
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 1.05;
+    letter-spacing: -.01em;
+    text-align: left;
     min-height: 44px;
 }
 

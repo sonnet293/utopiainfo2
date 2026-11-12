@@ -9,7 +9,9 @@
 
     const body = document.body;
     const intro = document.getElementById('intro-overlay');
-    const bgm = document.getElementById('bgm');
+    const bgmIntro = document.getElementById('bgm');
+    const bgmLoop = document.getElementById('bgm-loop');
+    let bgm = bgmIntro;
     const pageBar = document.querySelector('.page-bar');
     const progress = document.querySelector('.scroll-progress span');
     const views = [...document.querySelectorAll('.view')];
@@ -57,7 +59,18 @@
         }
     }
 
-    ['play', 'pause', 'volumechange'].forEach((type) => bgm.addEventListener(type, updateSoundButtons));
+    ['play', 'pause', 'volumechange'].forEach((type) => {
+        bgmIntro.addEventListener(type, updateSoundButtons);
+        bgmLoop.addEventListener(type, updateSoundButtons);
+    });
+
+    // bgm1을 한 번 재생한 뒤에는 bgm2만 반복 (bgm1 → bgm2 → bgm2 → ...)
+    bgmIntro.addEventListener('ended', () => {
+        bgmLoop.volume = bgmIntro.volume;
+        bgmLoop.muted = bgmIntro.muted;
+        bgm = bgmLoop;
+        playBgm();
+    });
 
     // 앱 전환이나 탭 이동 시에는 음악을 멈췄다가, 돌아오면 다시 재생
     let resumeOnReturn = false;
