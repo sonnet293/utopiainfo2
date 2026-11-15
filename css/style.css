@@ -21,6 +21,20 @@
     font-display: swap;
 }
 
+@font-face {
+    font-family: 'GounBatang';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/GowunBatang-Regular.woff') format('woff');
+    font-weight: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GounBatang';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/GowunBatang-Bold.woff') format('woff');
+    font-weight: 700;
+    font-display: swap;
+}
+
 :root {
     color-scheme: dark;
 
@@ -38,6 +52,7 @@
 
     --sans: "Pretendard", "Malgun Gothic", system-ui, sans-serif;
     --mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+    --serif: "GounBatang", sans-serif;
     --logo: "BusanDandiMyeongjo", "Nanum Myeongjo", "Batang", serif;
 
     --gutter: clamp(20px, 5vw, 64px);
@@ -346,8 +361,31 @@ button {
 
 .slogan {
     margin-top: 16px;
-    font-size: clamp(17px, 2.4vw, 26px);
+    font-family: var(--serif);
+    font-size: clamp(14px, 1.8vw, 20px);
     color: var(--muted);
+}
+
+/* 슬로건: 흔들림 없이 색번짐만 */
+.slogan {
+    --r: rgba(255, 40, 60, .9);
+    --c: rgba(40, 230, 255, .9);
+    color: var(--heading);
+    animation: slogan-chroma 2.8s steps(1) infinite;
+}
+
+/* 평소엔 효과 없는 흰 글씨, 순간적으로만 크게 번짐 (위치는 고정) */
+@keyframes slogan-chroma {
+    0%, 100% { text-shadow: none; }
+    14% { text-shadow: 8px 1px var(--r), -8px -1px var(--c), 0 0 14px rgba(40, 230, 255, .35); }
+    17% { text-shadow: -6px 0 var(--r), 6px 0 var(--c), 0 0 12px rgba(255, 40, 60, .35); }
+    20% { text-shadow: 12px -2px var(--r), -12px 2px var(--c), 0 0 18px rgba(255, 40, 60, .45); }
+    23% { text-shadow: none; }
+    48% { text-shadow: 5px 0 var(--r), -5px 0 var(--c), 0 0 12px rgba(40, 230, 255, .3); }
+    51% { text-shadow: none; }
+    74% { text-shadow: -14px 0 var(--r), 14px 0 var(--c), 0 0 20px rgba(40, 230, 255, .45); }
+    76% { text-shadow: 9px 2px var(--r), -9px -2px var(--c), 0 0 16px rgba(255, 40, 60, .4); }
+    79% { text-shadow: none; }
 }
 
 .main-nav {
