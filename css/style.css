@@ -115,7 +115,7 @@ body::before {
 
 /* 메인 화면에서는 배경을 선명하게 */
 body.is-home::before {
-    filter: blur(0);
+    filter: blur(2px);
 }
 
 [hidden] {
