@@ -1,6 +1,6 @@
 (() => {
     const SECTIONS = ['notice', 'world', 'system', 'battle'];
-    const BGM_VOLUME = 0.6;
+    const BGM_VOLUME = 0.4;
     const STAGGER_MS = 90;
     const STATIC_MS = 900;
     const STATIC_PEAK = 0.5;
