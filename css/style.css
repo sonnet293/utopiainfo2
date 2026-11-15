@@ -35,6 +35,20 @@
     font-display: swap;
 }
 
+@font-face {
+    font-family: 'HanlimMyungjo';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2204@1.0/HallymMjo-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'HanlimMyungjo';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2204@1.0/HallymMjo-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-display: swap;
+}
+
 :root {
     color-scheme: dark;
 
@@ -50,10 +64,10 @@
     --highlight-text: #1B1A15;
     --redact: #54585D;
 
-    --sans: "Pretendard", "Malgun Gothic", system-ui, sans-serif;
-    --mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
-    --serif: "GounBatang", sans-serif;
-    --logo: "BusanDandiMyeongjo", "Nanum Myeongjo", "Batang", serif;
+    --sans: "Pretendard", sans-serif;
+    --mono: "IBM Plex Mono", monospace;
+    --serif: "HanlimMyungjo", sans-serif;
+    --logo: "BusanDandiMyeongjo", sans-serif;
 
     --gutter: clamp(20px, 5vw, 64px);
     --bar-h: 56px;
