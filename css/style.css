@@ -550,11 +550,36 @@ button {
 }
 
 .sound-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
     min-height: 44px;
-    font: 500 11px/1 var(--mono);
-    letter-spacing: .08em;
     color: var(--muted);
-    white-space: nowrap;
+    transition: color .25s;
+}
+
+.sound-toggle:hover {
+    color: var(--heading);
+}
+
+.sound-toggle svg {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.sound-toggle .icon-on,
+.sound-toggle[aria-pressed="true"] .icon-off {
+    display: none;
+}
+
+.sound-toggle[aria-pressed="true"] .icon-on {
+    display: block;
 }
 
 .sound-toggle[aria-pressed="true"] {

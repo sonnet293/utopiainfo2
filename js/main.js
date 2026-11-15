@@ -45,7 +45,7 @@
     function updateSoundButtons() {
         const on = !bgm.paused && !bgm.muted;
         soundButtons.forEach((button) => {
-            button.textContent = on ? 'SOUND ON' : 'SOUND OFF';
+            button.setAttribute('aria-label', on ? '사운드 끄기' : '사운드 켜기');
             button.setAttribute('aria-pressed', String(on));
         });
     }
