@@ -49,20 +49,21 @@
     font-display: swap;
 }
 
+
 :root {
     color-scheme: dark;
 
-    --bg: #1B1A15;
-    --surface: #212224;
-    --surface-2: #292B2E;
-    --line: #383B3F;
-    --text: #D8D6D0;
-    --heading: #EEF0F2;
-    --muted: #979BA0;
-    --red: #C77B78;
-    --highlight: #E8CF5A;
-    --highlight-text: #1B1A15;
-    --redact: #54585D;
+    --bg: #191B20;
+    --surface: #22252B;
+    --surface-2: #2B2E35;
+    --line: #3B3F47;
+    --text: #D5D7DB;
+    --heading: #ECEEF1;
+    --muted: #979CA5;
+    --red: #E07171;
+    --highlight: #EED66B;
+    --highlight-text: #191B20;
+    --redact: #525760;
 
     --sans: "Pretendard", sans-serif;
     --mono: "IBM Plex Mono", monospace;
@@ -108,7 +109,13 @@ body::before {
         linear-gradient(rgba(27, 26, 21, .55), rgba(27, 26, 21, .55)),
         url("../img/background.jpg") center / cover no-repeat;
     filter: blur(14px);
+    transition: filter .6s ease;
     pointer-events: none;
+}
+
+/* 메인 화면에서는 배경을 선명하게 */
+body.is-home::before {
+    filter: blur(0);
 }
 
 [hidden] {
@@ -462,11 +469,27 @@ button {
 }
 
 @media (hover: hover) {
+    /* 박스 채우기 대신: 위 테두리를 따라 선이 그어지고, 나머지 항목은 한 톤 죽음 */
+    .main-nav button {
+        background: linear-gradient(var(--heading), var(--heading)) no-repeat 0 0 / 0% 1px;
+        transition: background-size .45s var(--ease), color .3s;
+    }
+    .main-nav button::before,
+    .main-nav button::after { transition: color .3s, letter-spacing .45s var(--ease); }
+
     .js .main-nav button.reveal {
-        transition: background .3s,
+        transition: background-size .45s var(--ease), color .3s,
             opacity .7s var(--ease) var(--delay, 0ms), transform .7s var(--ease) var(--delay, 0ms);
     }
-    .main-nav button:hover { background: var(--surface); }
+
+    .main-nav:hover button { color: var(--muted); }
+    .main-nav button:hover {
+        color: var(--heading);
+        background-size: 100% 1px;
+    }
+    .main-nav button:hover::before,
+    .main-nav button:hover::after { color: var(--heading); }
+    .main-nav button:hover::after { letter-spacing: .24em; }
 }
 
 /* 상단 바 */

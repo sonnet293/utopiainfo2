@@ -272,6 +272,7 @@
 
         views.forEach((view) => { view.hidden = view !== target; });
         pageBar.hidden = section < 0;
+        document.body.classList.toggle('is-home', section < 0);
         tabs.forEach((tab) => {
             if (Number(tab.dataset.section) === section) tab.setAttribute('aria-current', 'page');
             else tab.removeAttribute('aria-current');
