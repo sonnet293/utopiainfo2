@@ -336,6 +336,31 @@ button {
 .glitch-line + .glitch-line { --glitch-offset: -1.1s; }
 .glitch-line + .glitch-line + .glitch-line { --glitch-offset: -2.6s; }
 
+/* 터미널 타이핑: 출력 전에는 자리만 차지하고, 출력 중에는 글리치를 멈춤 */
+.type-pending { visibility: hidden; }
+.glitch-line.is-typing, .glitch-line.is-typing::before, .glitch-line.is-typing::after { animation: none; }
+
+.type-cursor {
+    display: inline-block;
+    width: .55em;
+    height: 1.05em;
+    margin-left: 2px;
+    vertical-align: -.15em;
+    background: currentColor;
+    animation: type-blink 1s steps(1) infinite;
+}
+@keyframes type-blink { 50% { opacity: 0; } }
+
+/* 타이핑 뒤에 이어지는 줄: 신호가 잡히듯 깜빡이며 등장 */
+.type-appear { animation: type-appear .4s steps(1); }
+@keyframes type-appear {
+    0%   { opacity: 0; }
+    25%  { opacity: 1; }
+    45%  { opacity: .15; }
+    65%  { opacity: 1; }
+    80%  { opacity: .5; }
+}
+
 /* 스크롤 애니메이션 */
 .js .reveal {
     opacity: 0;

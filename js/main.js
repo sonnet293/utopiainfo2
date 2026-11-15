@@ -243,6 +243,100 @@
         requestAnimationFrame(() => marks.forEach((mark) => markObserver.observe(mark)));
     }
 
+    /* ---------- 터미널 타이핑 ---------- */
+    // data-typing 줄은 처음 화면에 들어왔을 때 한 번만 한 글자씩 출력 (붙어 있는 줄끼리는 한 묶음으로 차례대로)
+    const TYPE_START_MS = 500;
+    const TYPE_CHAR_MS = 38;
+    const TYPE_LINE_MS = 350;
+    const TYPE_CURSOR_HOLD_MS = 1600;
+    const TYPE_FOLLOW_MS = 450;
+
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+        const groups = [];
+        const groupOf = new Map();
+        const textsOf = new Map();
+
+        document.querySelectorAll('[data-typing]').forEach((line) => {
+            const prev = line.previousElementSibling;
+            if (prev && prev.hasAttribute('data-typing')) groups[groups.length - 1].push(line);
+            else groups.push([line]);
+            groupOf.set(line, groups[groups.length - 1]);
+
+            const walker = document.createTreeWalker(line, NodeFilter.SHOW_TEXT);
+            const texts = [];
+            while (walker.nextNode()) {
+                if (walker.currentNode.data.trim()) texts.push({ node: walker.currentNode, text: walker.currentNode.data });
+            }
+            textsOf.set(line, texts);
+
+            // 자리는 유지한 채 숨겨 두어 출력 중에 아래 내용이 밀리지 않게 함
+            line.classList.add('type-pending');
+        });
+
+        // 묶음 바로 뒤에 이어지는 data-after-typing 줄은 타이핑이 끝난 뒤 차례로 등장
+        const followersOf = new Map();
+        groups.forEach((group) => {
+            const followers = [];
+            let next = group[group.length - 1].nextElementSibling;
+            while (next && next.hasAttribute('data-after-typing')) {
+                next.classList.add('type-pending');
+                followers.push(next);
+                next = next.nextElementSibling;
+            }
+            followersOf.set(group, followers);
+        });
+
+        async function typeGroup(group) {
+            await wait(TYPE_START_MS);
+
+            const cursor = document.createElement('span');
+            cursor.className = 'type-cursor';
+            cursor.setAttribute('aria-hidden', 'true');
+
+            group.forEach((line) => {
+                line.style.minHeight = `${line.offsetHeight}px`;
+                textsOf.get(line).forEach(({ node }) => { node.data = ''; });
+                line.classList.add('is-typing');
+                line.classList.remove('type-pending');
+            });
+
+            for (const line of group) {
+                for (const { node, text } of textsOf.get(line)) {
+                    node.after(cursor);
+                    const chars = [...text];
+                    for (let i = 1; i <= chars.length; i += 1) {
+                        node.data = chars.slice(0, i).join('');
+                        // 글자마다 간격을 조금씩 흔들어 실제 출력처럼 보이게 함
+                        await wait(TYPE_CHAR_MS * (0.5 + Math.random()));
+                    }
+                }
+                line.style.removeProperty('min-height');
+                line.classList.remove('is-typing');
+                await wait(TYPE_LINE_MS);
+            }
+
+            for (const follower of followersOf.get(group)) {
+                follower.classList.remove('type-pending');
+                follower.classList.add('type-appear');
+                await wait(TYPE_FOLLOW_MS);
+            }
+
+            await wait(TYPE_CURSOR_HOLD_MS);
+            cursor.remove();
+        }
+
+        // 줄 전체가 화면에 보일 때 시작 (문서 끝 근처여도 반드시 실행되도록 여백 없이 판정)
+        const typeObserver = new IntersectionObserver((entries) => {
+            entries.filter((entry) => entry.isIntersecting).forEach((entry) => {
+                typeObserver.unobserve(entry.target);
+                typeGroup(groupOf.get(entry.target));
+            });
+        }, { threshold: 1 });
+
+        groups.forEach((group) => typeObserver.observe(group[0]));
+    }
+
     function updateProgress() {
         const max = document.documentElement.scrollHeight - window.innerHeight;
 
