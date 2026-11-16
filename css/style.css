@@ -377,8 +377,8 @@ button {
 /* 메인 */
 #view-main {
     position: relative;
-    min-height: 100vh;
-    min-height: 100svh;
+    height: 100vh;
+    height: 100svh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -387,6 +387,20 @@ button {
     padding: calc(var(--gutter) + 40px) var(--gutter) calc(var(--gutter) + env(safe-area-inset-bottom));
     text-align: center;
 }
+
+/* 메뉴를 뺀 남은 높이를 헤더가 전부 차지 → 로고가 그 안에서 최대 크기 */
+.site-header {
+    flex: 1 1 0;
+    min-height: 0;
+    width: 100%;
+    container-type: size;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.site-header .slogan { margin-top: 4px; }
 
 .eyebrow {
     font: 500 12px/1.5 var(--mono);
@@ -403,6 +417,16 @@ button {
     font-size: clamp(52px, min(15vw, 16vh), 190px);
     line-height: .95;
     letter-spacing: -.02em;
+}
+
+.site-header h1 img {
+    display: block;
+    /* 헤더 영역(메뉴를 뺀 남은 공간)에 꽉 차게. 80px = 위 문구 + 슬로건 높이
+       1.76 = 로고 가로/세로 비율 (1683 / 956) */
+    width: min(100cqw, 1200px, calc((100cqh - 80px) * 1.76));
+    height: auto;
+    margin: 0 auto;
+    filter: brightness(0) invert(1); /* 검정 로고 → 흰색 */
 }
 
 .slogan {
@@ -542,6 +566,15 @@ button {
     letter-spacing: -.01em;
     text-align: left;
     min-height: 44px;
+    display: flex;
+    align-items: center;
+}
+
+.page-bar-logo img {
+    display: block;
+    height: 34px;
+    width: auto;
+    filter: brightness(0) invert(1); /* 검정 로고 → 흰색 */
 }
 
 .page-tabs {
