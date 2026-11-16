@@ -193,6 +193,14 @@ button {
     animation: rise 1.6s var(--ease) both;
 }
 
+.intro-logo img {
+    display: block;
+    width: min(64vw, 360px);
+    height: auto;
+    margin: 0 auto;
+    filter: brightness(0) invert(1); /* 검정 로고 → 흰색 */
+}
+
 .intro-tagline {
     position: relative;
     margin-top: 20px;
@@ -231,8 +239,10 @@ button {
     animation: glitch .36s steps(1) infinite;
 }
 
-.is-glitching .intro-logo {
-    text-shadow: 4px 0 rgba(255, 60, 70, .85), -4px 0 rgba(60, 220, 255, .85);
+.is-glitching .intro-logo img {
+    filter: brightness(0) invert(1)
+        drop-shadow(4px 0 rgba(255, 60, 70, .85))
+        drop-shadow(-4px 0 rgba(60, 220, 255, .85));
 }
 
 .is-glitching .intro-ring { animation: glitch-flicker .18s steps(1) infinite; }
